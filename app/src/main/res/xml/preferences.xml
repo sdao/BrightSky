@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <SwitchPreferenceCompat
+        app:key="@string/key_always_on_notification"
+        app:title="Show always-on notification"
+        app:iconSpaceReserved="false" />
+
+    <SwitchPreferenceCompat
+        app:key="@string/key_use_current_location"
+        app:title="Use current location"
+        app:iconSpaceReserved="false" />
+
+    <EditTextPreference
+        app:key="@string/key_static_place_name"
+        app:title="Location"
+        app:defaultValue="New York, NY 10028"
+        app:iconSpaceReserved="false" />
+
+</PreferenceScreen>

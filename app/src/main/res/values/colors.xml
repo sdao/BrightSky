@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primaryColor">#fafafa</color>
+    <color name="primaryLightColor">#ffffff</color>
+    <color name="primaryTextColor">#000</color>
+    <color name="secondaryColor">#4a80c7</color>
+    <color name="secondaryLightColor">#80a5d6</color>
+    <color name="secondaryTextColor">#ffffff</color>
+    <color name="tick">#dd999999</color>
+    <color name="stripe0">#eeeef5</color> <!--clear-->
+    <color name="text0">#222</color>
+    <color name="stripe1">#d5dae2</color> <!--partly cloudy-->
+    <color name="text1">#222</color>
+    <color name="stripe2">#b6bfcb</color> <!--mostly cloudy-->
+    <color name="text2">#222</color>
+    <color name="stripe3">#878f9a</color> <!--overcast-->
+    <color name="text3">#222</color>
+    <color name="stripe4">#80a5d6</color> <!--light rain-->
+    <color name="text4">#fff</color>
+    <color name="stripe5">#4a80c7</color> <!--rain-->
+    <color name="text5">#fff</color>
+    <color name="stripe6">#aba4db</color> <!--light snow-->
+    <color name="text6">#fff</color>
+    <color name="stripe7">#8c82ce</color> <!--snow-->
+    <color name="text7">#fff</color>
+    <color name="stripe_fog">#96D1B1</color>
+    <color name="text_fog">#fff</color>
+    <color name="stripe_clear">#fae094</color>
+    <color name="text_clear">#222</color>
+    <color name="stripe_unknown">#5c6066</color>
+    <color name="text_unknown">#fff</color>
+    <color name="daylight">#99FFC107</color>
+</resources>

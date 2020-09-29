@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Bright Sky</string>
+    <string name="service_description">Service that displays the always-on notification</string>
+
+    <string name="key_use_current_location">useCurrentLocation</string>
+    <string name="key_static_place_name">staticPlaceName</string>
+    <string name="key_always_on_notification">alwaysOnNotification</string>
+    <string name="key_current_lat_long">currentLatLong</string>
+    <string name="weather_timeline_description">Weather timeline for next 24 hours</string>
+</resources>
