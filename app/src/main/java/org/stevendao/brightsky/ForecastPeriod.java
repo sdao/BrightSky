@@ -25,11 +25,12 @@ public class ForecastPeriod implements Parcelable {
     };
 
     private static final DateTimeFormatter sFormatter = DateTimeFormatter.ofPattern("ha");
-    private @NonNull WeatherCondition mCondition = WeatherCondition.UNKNOWN;
-    private @NonNull OffsetDateTime mStartTime = OffsetDateTime.MIN;
-    private @NonNull OffsetDateTime mEndTime = OffsetDateTime.MIN;
-    private Optional<Integer> mTemperature = Optional.empty();
-    private boolean mDaytime = true;
+
+    private final @NonNull WeatherCondition mCondition;
+    private final @NonNull OffsetDateTime mStartTime;
+    private final @NonNull OffsetDateTime mEndTime;
+    private final Optional<Integer> mTemperature;
+    private final boolean mDaytime;
 
     public ForecastPeriod(
             @NonNull WeatherCondition condition,
@@ -45,27 +46,39 @@ public class ForecastPeriod implements Parcelable {
     }
 
     public ForecastPeriod(JSONObject jsonObject) {
+        WeatherCondition condition;
+        OffsetDateTime startTime;
+        OffsetDateTime endTime;
+        Optional<Integer> temp;
+        boolean isDaytime;
+
         try {
             String shortForecast = jsonObject.getString("shortForecast");
-            WeatherCondition condition = WeatherCondition.find(shortForecast);
+            condition = WeatherCondition.find(shortForecast);
 
             String startTimeStr = jsonObject.getString("startTime");
-            OffsetDateTime startTime = OffsetDateTime.parse(startTimeStr);
+            startTime = OffsetDateTime.parse(startTimeStr);
 
             String endTimeStr = jsonObject.getString("endTime");
-            OffsetDateTime endTime = OffsetDateTime.parse(endTimeStr);
+            endTime = OffsetDateTime.parse(endTimeStr);
 
-            Optional<Integer> temp = Optional.of(jsonObject.getInt("temperature"));
+            temp = Optional.of(jsonObject.getInt("temperature"));
 
-            boolean isDaytime = jsonObject.getBoolean("isDaytime");
+            isDaytime = jsonObject.getBoolean("isDaytime");
 
-            mCondition = condition;
-            mStartTime = startTime;
-            mEndTime = endTime;
-            mTemperature = temp;
-            mDaytime = isDaytime;
         } catch (JSONException ignored) {
+            condition = WeatherCondition.UNKNOWN;
+            startTime = OffsetDateTime.MIN;
+            endTime = OffsetDateTime.MIN;
+            temp = Optional.empty();
+            isDaytime = true;
         }
+
+        mCondition = condition;
+        mStartTime = startTime;
+        mEndTime = endTime;
+        mTemperature = temp;
+        mDaytime = isDaytime;
     }
 
     public @NonNull WeatherCondition getCondition() {

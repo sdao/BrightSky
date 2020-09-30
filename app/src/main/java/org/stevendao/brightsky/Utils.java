@@ -34,6 +34,8 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.time.Duration;
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
@@ -153,6 +155,7 @@ public final class Utils {
 
     public static Bitmap createTimelineImage(
             @NonNull Context context,
+            @NonNull GeographicPoint point,
             @NonNull List<ForecastPeriod> forecast,
             @Px int width,
             @Px int height,
@@ -208,32 +211,20 @@ public final class Utils {
 
         // Draw the daylight arcs over contiguous daytime periods.
         paint.setColor(context.getColor(R.color.daylight));
-        for (int i = 0; i < forecast.size();) {
-            if (!forecast.get(i).isDaytime()) {
-                i++;
-                continue;
-            }
+        final OffsetDateTime startTime = forecast.get(0).getStartTime();
+        final Daytime[] daytimes = {
+                new Daytime(point, startTime),
+                new Daytime(point, startTime.plusDays(1)),
+        };
+        for (final Daytime daytime : daytimes) {
+            Duration sunrise = Duration.between(startTime, daytime.getSunrise());
+            Duration sunset = Duration.between(startTime, daytime.getSunset());
 
-            int j = i;
-            while (j < forecast.size() && forecast.get(j).isDaytime()) {
-                j++;
-            }
-
-            final int missingDaylightHours = Math.max(0, 12 - (j - i));
-
-            float left = periodWidth * i;
-            if (i == 0) {
-                left -= missingDaylightHours * periodWidth;
-            }
-
-            float right = periodWidth * j;
-            if (j == forecast.size()) {
-                right += missingDaylightHours * periodWidth;
-            }
+            float secondsPerDay = Duration.ofDays(1).getSeconds();
+            float left = (sunrise.getSeconds() / secondsPerDay) * width;
+            float right = (sunset.getSeconds() / secondsPerDay) * width;
 
             canvas.drawOval(left, height * 0.8f, right, height * 1.2f, paint);
-
-            i = j;
         }
 
         // Clip out a rounded rectangle border.

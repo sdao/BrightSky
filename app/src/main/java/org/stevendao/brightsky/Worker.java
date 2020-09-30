@@ -108,6 +108,7 @@ public class Worker extends androidx.work.Worker {
     }
 
     public static void doOnce(@NonNull Context context) {
+        Log.d(Worker.class.getName(), "Enqueuing a one-time update");
         WorkManager.getInstance(context).enqueueUniqueWork(
                 UNIQUE_ONE_SHOT_WORK_NAME,
                 ExistingWorkPolicy.REPLACE,

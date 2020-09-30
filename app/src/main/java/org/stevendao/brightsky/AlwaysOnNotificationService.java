@@ -205,10 +205,22 @@ public class AlwaysOnNotificationService
 
         bigContent.setImageViewBitmap(
                 R.id.imageView,
-                Utils.createTimelineImage(this, twentyFour, 1600, 160, 40));
+                Utils.createTimelineImage(
+                        this,
+                        forecast.getGeographicPoint(),
+                        twentyFour,
+                        1600,
+                        160,
+                        40));
         smallContent.setImageViewBitmap(
                 R.id.imageView,
-                Utils.createTimelineImage(this, twentyFour, 1600, 160, 0));
+                Utils.createTimelineImage(
+                        this,
+                        forecast.getGeographicPoint(),
+                        twentyFour,
+                        1600,
+                        160,
+                        0));
 
         Notification notification = new Notification.Builder(this, CHANNEL_ID)
                 .setContentTitle("Current conditions")

@@ -30,9 +30,11 @@ public class GeographicPoint implements Parcelable {
         }
     };
 
-    private @Nullable String mCity;
-    private @Nullable String mForecastUrl;
-    private @Nullable String mForecastHourlyUrl;
+    private final double mLatitude;
+    private final double mLongitude;
+    private final @Nullable String mCity;
+    private final @Nullable String mForecastUrl;
+    private final @Nullable String mForecastHourlyUrl;
 
     public static @NonNull GeographicPoint request(
             @Nullable Location location,
@@ -57,12 +59,29 @@ public class GeographicPoint implements Parcelable {
     }
 
     private GeographicPoint() {
+        mLatitude = Double.MAX_VALUE;
+        mLongitude = Double.MAX_VALUE;
+        mCity = null;
+        mForecastUrl = null;
+        mForecastHourlyUrl = null;
     }
 
     private GeographicPoint(@NonNull JSONObject jsonObject, @Nullable Context context) {
+        double latitude;
+        double longitude;
+        String city;
+        String forecastUrl;
+        String forecastHourlyUrl;
+
         try {
+            JSONArray coordinates = jsonObject
+                    .getJSONObject("geometry")
+                    .getJSONArray("coordinates");
+            latitude = coordinates.getDouble(1);
+            longitude = coordinates.getDouble(0);
+
             JSONObject properties = jsonObject.getJSONObject("properties");
-            String city = properties
+            city = properties
                     .getJSONObject("relativeLocation")
                     .getJSONObject("properties")
                     .getString("city");
@@ -71,30 +90,39 @@ public class GeographicPoint implements Parcelable {
                     .getJSONObject("properties")
                     .getJSONObject("distance")
                     .getDouble("value");
-            String forecastUrl = properties.getString("forecast");
-            String forecastHourlyUrl = properties.getString("forecastHourly");
+            forecastUrl = properties.getString("forecast");
+            forecastHourlyUrl = properties.getString("forecastHourly");
 
             // Sometimes the relativeLocation provided by api.weather.gov is really far away. If
             // it's more than 1000m (1km) away, then use the place name from the Geocoder API
             // instead.
             if (distance > 1000.0 && context != null) {
-                JSONArray coordinates = jsonObject
-                        .getJSONObject("geometry")
-                        .getJSONArray("coordinates");
-                double latitude = coordinates.getDouble(1);
-                double longitude = coordinates.getDouble(0);
-
                 String placeName = Utils.getPlaceNameFromLatLong(context, latitude, longitude);
                 if (placeName != null) {
                     city = placeName;
                 }
             }
-
-            mCity = city;
-            mForecastUrl = forecastUrl;
-            mForecastHourlyUrl = forecastHourlyUrl;
         } catch (JSONException ignored) {
+            latitude = Double.MAX_VALUE;
+            longitude = Double.MAX_VALUE;
+            city = null;
+            forecastUrl = null;
+            forecastHourlyUrl = null;
         }
+
+        mLatitude = latitude;
+        mLongitude = longitude;
+        mCity = city;
+        mForecastUrl = forecastUrl;
+        mForecastHourlyUrl = forecastHourlyUrl;
+    }
+
+    public double getLatitude() {
+        return mLatitude;
+    }
+
+    public double getLongitude() {
+        return mLongitude;
     }
 
     public @Nullable String getCity() {
@@ -110,6 +138,8 @@ public class GeographicPoint implements Parcelable {
     }
 
     private GeographicPoint(Parcel in) {
+        mLatitude = in.readDouble();
+        mLongitude = in.readDouble();
         mCity = in.readString();
         mForecastUrl = in.readString();
         mForecastHourlyUrl = in.readString();
@@ -122,6 +152,8 @@ public class GeographicPoint implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeDouble(mLatitude);
+        dest.writeDouble(mLongitude);
         dest.writeString(mCity);
         dest.writeString(mForecastUrl);
         dest.writeString(mForecastHourlyUrl);

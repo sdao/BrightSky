@@ -34,9 +34,9 @@ public class Forecast implements Parcelable {
         }
     };
 
-    private @NonNull GeographicPoint mPoint;
-    private @NonNull List<ForecastPeriod> mForecastPeriods;
-    private @Nullable String mDescription;
+    private final @NonNull GeographicPoint mPoint;
+    private final @NonNull List<ForecastPeriod> mForecastPeriods;
+    private final @Nullable String mDescription;
 
     public static Forecast request(
             @NonNull GeographicPoint point,
@@ -73,15 +73,17 @@ public class Forecast implements Parcelable {
     {
         mPoint = point;
 
+        String description;
         try {
-            mDescription = rawForecast
+            description = rawForecast
                     .getJSONObject("properties")
                     .getJSONArray("periods")
                     .getJSONObject(0)
                     .getString("detailedForecast");
         } catch (JSONException e) {
-            mDescription = null;
+            description = null;
         }
+        mDescription = description;
 
         mForecastPeriods = new ArrayList<>();
         try {
