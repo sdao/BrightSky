@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/stripe_fog"
+        android:textColor="@color/text_fog"
+        android:text="Fog" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/stripe_ice"
+        android:textColor="@color/text_ice"
+        android:text="Ice" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/stripe_haze"
+        android:textColor="@color/text_haze"
+        android:text="Haze" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/stripe_clear"
+        android:textColor="@color/text_clear"
+        android:text="@string/clear" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/stripe0"
+        android:textColor="@color/text0"
+        android:text="@string/mostly_clear" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/stripe1"
+        android:textColor="@color/text1"
+        android:text="@string/partly_cloudy" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/stripe2"
+        android:textColor="@color/text2"
+        android:text="@string/mostly_cloudy" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/stripe3"
+        android:textColor="@color/text3"
+        android:text="@string/overcast" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/stripe4"
+        android:textColor="@color/text4"
+        android:text="@string/light_rain" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/stripe5"
+        android:textColor="@color/text5"
+        android:text="@string/rain" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/stripe6"
+        android:textColor="@color/text6"
+        android:text="@string/light_snow" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/stripe7"
+        android:textColor="@color/text7"
+        android:text="@string/snow" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/stripe_unknown"
+        android:textColor="@color/text_unknown"
+        android:text="@string/unknown" />
+</LinearLayout>

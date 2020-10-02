@@ -197,10 +197,11 @@ public final class Utils {
             canvas.drawRect(Math.round(left), 0, Math.round(right), height, paint);
 
             // Draw the text if it fits inside the segment.
-            final float textWidth = textPaint.measureText(periodStart.getDescription());
+            final String description = context.getString(periodStart.getDescriptionId());
+            final float textWidth = textPaint.measureText(description);
             if (textWidth * 1.1 < (right - left)) {
                 canvas.drawText(
-                        periodStart.getDescription(),
+                        description,
                         (left + right) / 2f,
                         (height + textHeight) / 2f,
                         textPaint);
@@ -224,7 +225,7 @@ public final class Utils {
             float left = (sunrise.getSeconds() / secondsPerDay) * width;
             float right = (sunset.getSeconds() / secondsPerDay) * width;
 
-            canvas.drawOval(left, height * 0.8f, right, height * 1.2f, paint);
+            canvas.drawOval(left, height * 0.75f, right, height * 1.25f, paint);
         }
 
         // Clip out a rounded rectangle border.

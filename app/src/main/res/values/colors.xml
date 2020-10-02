@@ -24,7 +24,11 @@
     <color name="stripe7">#8c82ce</color> <!--snow-->
     <color name="text7">#fff</color>
     <color name="stripe_fog">#96D1B1</color>
-    <color name="text_fog">#fff</color>
+    <color name="text_fog">#222</color>
+    <color name="stripe_ice">#D09AD6</color>
+    <color name="text_ice">#fff</color>
+    <color name="stripe_haze">#A87B66</color>
+    <color name="text_haze">#fff</color>
     <color name="stripe_clear">#fae094</color>
     <color name="text_clear">#222</color>
     <color name="stripe_unknown">#5c6066</color>

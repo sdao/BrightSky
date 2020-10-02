@@ -7,4 +7,18 @@
     <string name="key_always_on_notification">alwaysOnNotification</string>
     <string name="key_current_lat_long">currentLatLong</string>
     <string name="weather_timeline_description">Weather timeline for next 24 hours</string>
+
+    <string name="fog">Fog</string>
+    <string name="ice">Ice</string>
+    <string name="haze">Haze</string>
+    <string name="clear">Clear</string>
+    <string name="mostly_clear">Mostly Clear</string>
+    <string name="partly_cloudy">Partly Cloudy</string>
+    <string name="mostly_cloudy">Mostly Cloudy</string>
+    <string name="overcast">Overcast</string>
+    <string name="light_rain">Light Rain</string>
+    <string name="rain">Rain</string>
+    <string name="light_snow">Light Snow</string>
+    <string name="snow">Snow</string>
+    <string name="unknown">Unknown</string>
 </resources>
