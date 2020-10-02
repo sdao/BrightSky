@@ -8,19 +8,19 @@
         android:layout_height="wrap_content"
         android:background="@color/stripe_fog"
         android:textColor="@color/text_fog"
-        android:text="Fog" />
+        android:text="@string/fog" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/stripe_ice"
         android:textColor="@color/text_ice"
-        android:text="Ice" />
+        android:text="@string/ice" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/stripe_haze"
         android:textColor="@color/text_haze"
-        android:text="Haze" />
+        android:text="@string/haze" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
