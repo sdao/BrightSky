@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primaryColor">#fafafa</color>
-    <color name="primaryLightColor">#ffffff</color>
-    <color name="primaryTextColor">#000</color>
-    <color name="secondaryColor">#4a80c7</color>
-    <color name="secondaryLightColor">#80a5d6</color>
-    <color name="secondaryTextColor">#ffffff</color>
+    <color name="primaryColor">#1565c0</color>
+    <color name="primaryDarkColor">#003c8f</color>
+    <color name="primaryTextColor">#fff</color>
+    <color name="secondaryColor">#fbc02d</color>
+    <color name="secondaryDarkColor">#c49000</color>
+    <color name="secondaryTextColor">#000</color>
     <color name="tick">#dd999999</color>
     <color name="stripe0">#eeeef5</color> <!--clear-->
     <color name="text0">#222</color>
